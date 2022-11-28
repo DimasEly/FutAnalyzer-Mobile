@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
 
         // hat trick do richarlisson
+        // vamo brasil
     }
 
 }
