@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">FutAnalyzer</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_atual">WL Atual</string>
+    <string name="title_estatisticas">Estatísticas WLs</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="title_activity_splash">Splash Activity</string>
 </resources>

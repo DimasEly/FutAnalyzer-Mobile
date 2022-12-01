@@ -1,4 +1,4 @@
-package com.example.futanalyzer.ui.dashboard;
+package com.example.futanalyzer.ui.estatisticas;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
