@@ -1,14 +1,14 @@
-package com.example.futanalyzer.ui.home;
+package com.example.futanalyzer.ui.wl;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class WlViewModel extends ViewModel {
 
     private final MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public WlViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is home fragment");
     }

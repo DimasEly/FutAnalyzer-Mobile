@@ -1,4 +1,4 @@
-package com.example.futanalyzer.ui.home;
+package com.example.futanalyzer.ui.wl;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,20 +12,20 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.futanalyzer.databinding.FragmentHomeBinding;
 
-public class HomeFragment extends Fragment {
+public class WlFragment extends Fragment {
 
     private FragmentHomeBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        WlViewModel wlViewModel =
+                new ViewModelProvider(this).get(WlViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textHome;
-        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        wlViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
