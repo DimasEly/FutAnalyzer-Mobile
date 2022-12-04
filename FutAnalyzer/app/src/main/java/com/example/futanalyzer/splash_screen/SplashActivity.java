@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import com.example.futanalyzer.MainActivity;
 import com.example.futanalyzer.R;
+import com.example.futanalyzer.login.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
     ImageView imagemSplash;
@@ -22,7 +23,7 @@ public class SplashActivity extends AppCompatActivity {
         imagemSplash.animate().setDuration(2000).alpha(1f).withEndAction(new Runnable() {
             @Override
             public void run() {
-                Intent it = new Intent(SplashActivity.this, MainActivity.class);
+                Intent it = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(it);
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
