@@ -16,9 +16,10 @@
     <string name="email_login">Email</string>
 
 
-<!--    botões-->
+    <!--    botões-->
     <string name="entrar_botao">Entrar</string>
     <string name="cadastrar_botao">Cadastrar</string>
+    <string name="enviar_botao">Enviar</string>
 
 
     <string name="hello_first_fragment">Hello first fragment</string>

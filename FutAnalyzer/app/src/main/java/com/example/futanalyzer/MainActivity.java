@@ -1,7 +1,15 @@
 package com.example.futanalyzer;
 
+import android.content.ClipData;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
+import com.example.futanalyzer.jogadores.JogadoresActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +21,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.futanalyzer.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-
+    MenuItem botaoJogadores;
     private ActivityMainBinding binding;
 
     @Override
@@ -32,6 +40,25 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+
+        botaoJogadores = findViewById(R.id.jogadores);
+
+//        botaoJogadores.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem menuItem) {
+//                Intent it = new Intent(MainActivity.this, JogadoresActivity.class);
+//                startActivity(it);
+//                return true;
+//            }
+//        });  - problema
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.botao_jogadores, menu);
+        return true;
+
     }
 
 }
