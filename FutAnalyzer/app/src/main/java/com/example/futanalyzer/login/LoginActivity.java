@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,9 +22,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        etLoginUsuario = findViewById(R.id.etLoginUsuario);
-        etSenhaUsuario = findViewById(R.id.etSenhaUsuario);
-        btEntrarUsuario = findViewById(R.id.btEntrarLogin);
+        etLoginUsuario = findViewById(R.id.etUsuarioCadastro);
+        etSenhaUsuario = findViewById(R.id.etEmailCadastro);
+        btEntrarUsuario = findViewById(R.id.btCadastrarCadastro);
         btCadastrarUsuario = findViewById(R.id.btCadastrarLogin);
         tvEsqueceuSenha = findViewById(R.id.tvEsqueceuSenha);
 

@@ -6,4 +6,88 @@
     android:layout_height="match_parent"
     tools:context=".login.CadastroActivity">
 
+    <TextView
+        android:id="@+id/tvUsuarioCadastro"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:text="@string/usuario_login"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <EditText
+        android:id="@+id/etUsuarioCadastro"
+        android:background="@drawable/fundo_edit_text"
+        android:layout_width="300dp"
+        android:layout_marginTop="8dp"
+        android:paddingStart="20dp"
+        android:singleLine="true"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/tvUsuarioCadastro"
+        app:layout_constraintStart_toStartOf="@+id/tvUsuarioCadastro" />
+
+    <TextView
+        android:id="@+id/tvEmailCadastro"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:text="@string/email_login"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/etUsuarioCadastro"
+        app:layout_constraintStart_toStartOf="@+id/etUsuarioCadastro" />
+
+    <EditText
+        android:id="@+id/etEmailCadastro"
+        android:background="@drawable/fundo_edit_text"
+        android:layout_width="300dp"
+        android:layout_marginTop="8dp"
+        android:paddingStart="20dp"
+        android:singleLine="true"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/tvEmailCadastro"
+        app:layout_constraintStart_toStartOf="@+id/tvUsuarioCadastro"
+        tools:ignore="RtlSymmetry" />
+
+    <TextView
+        android:id="@+id/tvSenhaCadastro"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:text="@string/email_login"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/etEmailCadastro"
+        app:layout_constraintStart_toStartOf="@+id/etEmailCadastro" />
+
+    <EditText
+        android:id="@+id/etSenhaCadastro"
+        android:background="@drawable/fundo_edit_text"
+        android:layout_width="300dp"
+        android:layout_marginTop="8dp"
+        android:paddingStart="20dp"
+        android:singleLine="true"
+        android:layout_height="50dp"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@id/tvSenhaCadastro"
+        app:layout_constraintStart_toStartOf="@+id/tvUsuarioCadastro"
+        tools:ignore="RtlSymmetry" />
+
+    <Button
+        android:id="@+id/btCadastrarCadastro"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:padding="16dp"
+        android:text="@string/cadastrar_botao"
+        android:textSize="16sp"
+        android:layout_marginTop="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etSenhaCadastro" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

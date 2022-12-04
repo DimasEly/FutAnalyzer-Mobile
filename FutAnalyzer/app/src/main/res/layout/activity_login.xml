@@ -29,10 +29,10 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/tvLoginUsuario"
+            android:id="@+id/tvUsuarioCadastro"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:text="@string/nome_login"
+            android:text="@string/usuario_login"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -43,37 +43,37 @@
 
         <EditText
             android:background="@drawable/fundo_edit_text"
-            android:id="@+id/etLoginUsuario"
+            android:id="@+id/etUsuarioCadastro"
             android:layout_width="300dp"
             android:layout_marginTop="8dp"
             android:paddingStart="20dp"
             android:singleLine="true"
             android:layout_height="50dp"
-            app:layout_constraintTop_toBottomOf="@id/tvLoginUsuario"
-            app:layout_constraintStart_toStartOf="@+id/tvLoginUsuario" />
+            app:layout_constraintTop_toBottomOf="@id/tvUsuarioCadastro"
+            app:layout_constraintStart_toStartOf="@+id/tvUsuarioCadastro" />
 
         <TextView
-            android:id="@+id/tvSenhaUsuario"
+            android:id="@+id/tvEmailCadastro"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:text="@string/senha_login"
             android:textSize="16sp"
             android:textStyle="bold"
             android:layout_marginTop="12dp"
-            app:layout_constraintTop_toBottomOf="@id/etLoginUsuario"
-            app:layout_constraintStart_toStartOf="@+id/etLoginUsuario" />
+            app:layout_constraintTop_toBottomOf="@id/etUsuarioCadastro"
+            app:layout_constraintStart_toStartOf="@+id/etUsuarioCadastro" />
 
         <EditText
             android:background="@drawable/fundo_edit_text"
-            android:id="@+id/etSenhaUsuario"
+            android:id="@+id/etEmailCadastro"
             android:layout_width="300dp"
             android:layout_marginTop="8dp"
             android:paddingStart="20dp"
             android:singleLine="true"
             android:layout_height="50dp"
             android:inputType="textPassword"
-            app:layout_constraintTop_toBottomOf="@id/tvSenhaUsuario"
-            app:layout_constraintStart_toStartOf="@+id/tvLoginUsuario"
+            app:layout_constraintTop_toBottomOf="@id/tvEmailCadastro"
+            app:layout_constraintStart_toStartOf="@+id/tvUsuarioCadastro"
             tools:ignore="RtlSymmetry" />
 
         <TextView
@@ -81,25 +81,25 @@
             style="?attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Esqueceu a senha?"
+            android:text="@string/esqueceu_senha_login"
             android:textSize="13sp"
             android:clickable="true"
             android:background="?attr/selectableItemBackground"
-            app:layout_constraintTop_toBottomOf="@id/etSenhaUsuario"
-            app:layout_constraintStart_toStartOf="@+id/etSenhaUsuario"/>
+            app:layout_constraintTop_toBottomOf="@id/etEmailCadastro"
+            app:layout_constraintStart_toStartOf="@+id/etEmailCadastro"/>
 
         <Button
-            android:id="@+id/btEntrarLogin"
+            android:id="@+id/btCadastrarCadastro"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/black"
             android:padding="16dp"
-            android:text="@string/entrar_login"
+            android:text="@string/entrar_botao"
             android:textSize="16sp"
             android:layout_marginTop="45dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etSenhaUsuario" />
+            app:layout_constraintTop_toBottomOf="@id/etEmailCadastro" />
 
         <Button
             android:id="@+id/btCadastrarLogin"
@@ -107,12 +107,12 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/black"
             android:padding="16dp"
-            android:text="@string/cadastrar_login"
+            android:text="@string/cadastrar_botao"
             android:textSize="16sp"
             android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btEntrarLogin" />
+            app:layout_constraintTop_toBottomOf="@id/btCadastrarCadastro" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
