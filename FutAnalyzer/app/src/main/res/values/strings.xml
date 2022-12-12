@@ -15,6 +15,9 @@
     <string name="esqueceu_senha_login">Esqueceu a sua senha?</string>
     <string name="email_login">Email</string>
 
+    <!--    tela de cadastro de jogadores-->
+    <string name="nome_cadastro_jogador">Nome</string>
+    <string name="overall_cadastro_jogador">Overall</string>
 
     <!--    botões-->
     <string name="entrar_botao">Entrar</string>

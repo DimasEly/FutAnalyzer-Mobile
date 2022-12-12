@@ -3,6 +3,7 @@ package com.example.futanalyzer;
 import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.example.futanalyzer.jogadores.JogadoresActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -42,16 +44,16 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
 
         botaoJogadores = findViewById(R.id.jogadores);
+    }
 
-//        botaoJogadores.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem menuItem) {
-//                Intent it = new Intent(MainActivity.this, JogadoresActivity.class);
-//                startActivity(it);
-//                return true;
-//            }
-//        });  - problema
-
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.jogadores){
+            Intent it = new Intent(MainActivity.this, JogadoresActivity.class);
+            startActivity(it);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
