@@ -22,6 +22,7 @@
     <!--    botões-->
     <string name="entrar_botao">Entrar</string>
     <string name="cadastrar_botao">Cadastrar</string>
+    <string name="cancelar_botao">Cancelar</string>
     <string name="enviar_botao">Enviar</string>
 
 

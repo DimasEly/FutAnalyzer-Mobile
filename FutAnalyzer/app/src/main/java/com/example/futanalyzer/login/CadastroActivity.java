@@ -20,10 +20,10 @@ public class CadastroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
         getSupportActionBar().hide();
 
-        etUsuarioCadastro = findViewById(R.id.etUsuarioCadastro);
-        etEmailCadastro = findViewById(R.id.etEmailCadastro);
+        etUsuarioCadastro = findViewById(R.id.etNomeCadastroJogadores);
+        etEmailCadastro = findViewById(R.id.etOverallCadastroJogadores);
         etSenhaCadastro = findViewById(R.id.etSenhaCadastro);
-        btCadastrar = findViewById(R.id.btCadastrarCadastro);
+        btCadastrar = findViewById(R.id.btCancelarCadastro);
 
         btCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override

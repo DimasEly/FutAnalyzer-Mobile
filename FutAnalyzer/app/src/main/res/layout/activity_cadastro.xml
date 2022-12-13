@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.3" />
 
     <EditText
-        android:id="@+id/etUsuarioCadastro"
+        android:id="@+id/etNomeCadastroJogadores"
         android:background="@drawable/fundo_edit_text"
         android:layout_width="300dp"
         android:layout_marginTop="8dp"
@@ -31,25 +31,25 @@
         app:layout_constraintStart_toStartOf="@+id/tvUsuarioCadastro" />
 
     <TextView
-        android:id="@+id/tvEmailCadastro"
+        android:id="@+id/tvOverallCadastroJogador"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:text="@string/email_login"
         android:textSize="16sp"
         android:textStyle="bold"
         android:layout_marginTop="12dp"
-        app:layout_constraintTop_toBottomOf="@id/etUsuarioCadastro"
-        app:layout_constraintStart_toStartOf="@+id/etUsuarioCadastro" />
+        app:layout_constraintTop_toBottomOf="@id/etNomeCadastroJogadores"
+        app:layout_constraintStart_toStartOf="@+id/etNomeCadastroJogadores" />
 
     <EditText
-        android:id="@+id/etEmailCadastro"
+        android:id="@+id/etOverallCadastroJogadores"
         android:background="@drawable/fundo_edit_text"
         android:layout_width="300dp"
         android:layout_marginTop="8dp"
         android:paddingStart="20dp"
         android:singleLine="true"
         android:layout_height="50dp"
-        app:layout_constraintTop_toBottomOf="@id/tvEmailCadastro"
+        app:layout_constraintTop_toBottomOf="@id/tvOverallCadastroJogador"
         app:layout_constraintStart_toStartOf="@+id/tvUsuarioCadastro"
         tools:ignore="RtlSymmetry" />
 
@@ -61,8 +61,8 @@
         android:textSize="16sp"
         android:textStyle="bold"
         android:layout_marginTop="12dp"
-        app:layout_constraintTop_toBottomOf="@id/etEmailCadastro"
-        app:layout_constraintStart_toStartOf="@+id/etEmailCadastro" />
+        app:layout_constraintTop_toBottomOf="@id/etOverallCadastroJogadores"
+        app:layout_constraintStart_toStartOf="@+id/etOverallCadastroJogadores" />
 
     <EditText
         android:id="@+id/etSenhaCadastro"
@@ -78,7 +78,7 @@
         tools:ignore="RtlSymmetry" />
 
     <Button
-        android:id="@+id/btCadastrarCadastro"
+        android:id="@+id/btCancelarCadastro"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/black"

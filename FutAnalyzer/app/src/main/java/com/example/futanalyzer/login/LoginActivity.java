@@ -22,9 +22,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        etLoginUsuario = findViewById(R.id.etUsuarioCadastro);
-        etSenhaUsuario = findViewById(R.id.etEmailCadastro);
-        btEntrarUsuario = findViewById(R.id.btCadastrarCadastro);
+        etLoginUsuario = findViewById(R.id.etNomeCadastroJogadores);
+        etSenhaUsuario = findViewById(R.id.etOverallCadastroJogadores);
+        btEntrarUsuario = findViewById(R.id.btCancelarCadastro);
         btCadastrarUsuario = findViewById(R.id.btCadastrarLogin);
         tvEsqueceuSenha = findViewById(R.id.tvEsqueceuSenha);
 
