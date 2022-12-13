@@ -78,7 +78,7 @@
         tools:ignore="RtlSymmetry" />
 
     <Button
-        android:id="@+id/btCancelarCadastro"
+        android:id="@+id/btCancelarJogadorCadastro"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/black"

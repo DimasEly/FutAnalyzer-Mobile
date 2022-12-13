@@ -23,7 +23,7 @@ public class CadastroActivity extends AppCompatActivity {
         etUsuarioCadastro = findViewById(R.id.etNomeCadastroJogadores);
         etEmailCadastro = findViewById(R.id.etOverallCadastroJogadores);
         etSenhaCadastro = findViewById(R.id.etSenhaCadastro);
-        btCadastrar = findViewById(R.id.btCancelarCadastro);
+        btCadastrar = findViewById(R.id.btCancelarJogadorCadastro);
 
         btCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override

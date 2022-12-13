@@ -24,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
 
         etLoginUsuario = findViewById(R.id.etNomeCadastroJogadores);
         etSenhaUsuario = findViewById(R.id.etOverallCadastroJogadores);
-        btEntrarUsuario = findViewById(R.id.btCancelarCadastro);
+        btEntrarUsuario = findViewById(R.id.btCancelarJogadorCadastro);
         btCadastrarUsuario = findViewById(R.id.btCadastrarLogin);
         tvEsqueceuSenha = findViewById(R.id.tvEsqueceuSenha);
 
