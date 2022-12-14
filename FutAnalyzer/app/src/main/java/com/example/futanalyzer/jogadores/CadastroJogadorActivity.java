@@ -45,40 +45,41 @@ public class CadastroJogadorActivity extends AppCompatActivity {
                         if(overInt >= 30 && overInt <= 99){
                             String nome = etNomeJogador.getText().toString();
                             int overall = Integer.parseInt(etOverallJogador.getText().toString());
-
                             int gol = 0;
 
                             //criando o objeto da classe
-                            meuJogador = new Jogador(nome, overall, gol);
+                            Jogador meuJogador = new Jogador(nome, overall, gol);
+
+                            informacoesApp.getListaJogador().add(meuJogador);
 
                             //criando a thread para o envio do jogador ao servidor
-                            final Thread thread = new Thread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    try{
-                                        //iniciando o protocolo para cadastro de jogador
-                                        informacoesApp.out.writeObject("cadastroJogador");
-                                        msgRecebida = (String) informacoesApp.in.readObject();
-                                        if(msgRecebida.equals("Ok")){
-                                            informacoesApp.out.writeObject(meuJogador);
-                                            msgRecebida = (String) informacoesApp.in.readObject();
-                                            //sincronizando as threads para agir sobre a tela
-                                            runOnUiThread(new Runnable() {
-                                                @Override
-                                                public void run() {
-                                                    Toast.makeText(informacoesApp, "RECEBIDO" + msgRecebida, Toast.LENGTH_SHORT).show();
-                                                    limpaCampos();
-
-                                                }
-                                            });
-                                        }
-                                    } catch (IOException ioe){
-
-                                    } catch (ClassNotFoundException classe){
-
-                                    }
-                                }
-                            });
+//                            final Thread thread = new Thread(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    try{
+//                                        //iniciando o protocolo para cadastro de jogador
+//                                        informacoesApp.out.writeObject("cadastroJogador");
+//                                        msgRecebida = (String) informacoesApp.in.readObject();
+//                                        if(msgRecebida.equals("Ok")){
+//                                            informacoesApp.out.writeObject(meuJogador);
+//                                            msgRecebida = (String) informacoesApp.in.readObject();
+//                                            //sincronizando as threads para agir sobre a tela
+//                                            runOnUiThread(new Runnable() {
+//                                                @Override
+//                                                public void run() {
+//                                                    Toast.makeText(informacoesApp, "RECEBIDO" + msgRecebida, Toast.LENGTH_SHORT).show();
+//                                                    limpaCampos();
+//
+//                                                }
+//                                            });
+//                                        }
+//                                    } catch (IOException ioe){
+//
+//                                    } catch (ClassNotFoundException classe){
+//
+//                                    }
+//                                }
+//                            });
 
 
                         } else {

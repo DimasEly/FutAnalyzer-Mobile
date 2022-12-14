@@ -14,39 +14,54 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/imagem_burger"
+        <TextView
+            android:id="@+id/jogador_over"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="8dp"
+            android:textSize="40sp"
+            android:textAlignment="center"
+            android:gravity="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:text="89"/>
 
 
         <TextView
-            android:id="@+id/burger_info_nome"
+            android:id="@+id/jogador_nome"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@id/imagem_burger"
+            app:layout_constraintStart_toEndOf="@id/jogador_over"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Hamburger de carne" />
+            tools:text="Neymar Júnior" />
 
-        <TextView
-            android:id="@+id/burger_info_preco"
+        <ImageView
+            android:id="@+id/gol"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@id/imagem_burger"
-            app:layout_constraintTop_toBottomOf= "@id/burger_info_nome"
-            tools:text="9,99" />
+            app:layout_constraintStart_toEndOf="@id/jogador_over"
+            app:layout_constraintTop_toBottomOf= "@id/jogador_nome"
+            tools:src="@drawable/ic_gol" />
+
+        <TextView
+            android:id="@+id/jogador_gol"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginLeft="8dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/gol"
+            app:layout_constraintTop_toTopOf="@id/gol"
+            android:text="8"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

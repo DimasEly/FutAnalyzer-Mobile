@@ -54,33 +54,32 @@ public class MainActivity extends AppCompatActivity {
         botaoJogadores = findViewById(R.id.jogadores);
 
         //obtendo o contexto
-        informacoesApp = (InformacoesApp) getApplicationContext();
-
-        //criando thread
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try{
-                    //criando conexão com o servidor
-                    informacoesApp.socket = new Socket("10.0.2.2", 12345);
-                    informacoesApp.out = new ObjectOutputStream(informacoesApp.socket.getOutputStream());
-                    informacoesApp.in = new ObjectInputStream(informacoesApp.socket.getInputStream());
-
-                    //sincronizando thread
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(informacoesApp, "Conexão efetuada com sucesso", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-                } catch (IOException ioe){
-                    ioe.printStackTrace();
-                }
-            }
-        });
-
-        thread.start();
+//        informacoesApp = (InformacoesApp) getApplicationContext();
+//
+//        //criando thread
+//        Thread thread = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                try{
+//                    //criando conexão com o servidor
+//                    informacoesApp.socket = new Socket("10.0.2.2", 12345);
+//                    informacoesApp.out = new ObjectOutputStream(informacoesApp.socket.getOutputStream());
+//                    informacoesApp.in = new ObjectInputStream(informacoesApp.socket.getInputStream());
+//
+//                    //sincronizando thread
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            Toast.makeText(informacoesApp, "Conexão efetuada com sucesso", Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
+//
+//                } catch (IOException ioe){
+//                    ioe.printStackTrace();
+//                }
+//            }
+//        });
+//        thread.start();
     }
 
     @Override
