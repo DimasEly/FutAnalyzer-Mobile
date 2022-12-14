@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.futanalyzer.R;
 import com.example.futanalyzer.informacoes.InformacoesApp;
+
+import java.io.IOException;
 
 import modelDominio.Jogador;
 
@@ -31,17 +34,53 @@ public class CadastroJogadorActivity extends AppCompatActivity {
         bCadastrar = findViewById(R.id.btJogadorCadastro);
         bCancelar = findViewById(R.id.btCancelarJogadorCadastro);
 
-//        informacoesApp = (InformacoesApp) getApplicationContext();
+        informacoesApp = (InformacoesApp)getApplicationContext();
 
         bCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(!etNomeJogador.getText().toString().equals("")){
                     if(!etOverallJogador.getText().toString().equals("")){
-                        int overInt = Integer.parseInt(etOverallJogador.getText().toString().trim());
+                        int overInt = Integer.parseInt(etOverallJogador.getText().toString());
                         if(overInt >= 30 && overInt <= 99){
-                            Intent it = new Intent(CadastroJogadorActivity.this, JogadoresActivity.class);
-                            startActivity(it);
+                            String nome = etNomeJogador.getText().toString();
+                            int overall = Integer.parseInt(etOverallJogador.getText().toString());
+
+                            int gol = 0;
+
+                            //criando o objeto da classe
+                            meuJogador = new Jogador(nome, overall, gol);
+
+                            //criando a thread para o envio do jogador ao servidor
+                            final Thread thread = new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try{
+                                        //iniciando o protocolo para cadastro de jogador
+                                        informacoesApp.out.writeObject("cadastroJogador");
+                                        msgRecebida = (String) informacoesApp.in.readObject();
+                                        if(msgRecebida.equals("Ok")){
+                                            informacoesApp.out.writeObject(meuJogador);
+                                            msgRecebida = (String) informacoesApp.in.readObject();
+                                            //sincronizando as threads para agir sobre a tela
+                                            runOnUiThread(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    Toast.makeText(informacoesApp, "RECEBIDO" + msgRecebida, Toast.LENGTH_SHORT).show();
+                                                    limpaCampos();
+
+                                                }
+                                            });
+                                        }
+                                    } catch (IOException ioe){
+
+                                    } catch (ClassNotFoundException classe){
+
+                                    }
+                                }
+                            });
+
+
                         } else {
                             etOverallJogador.setError("Erro: overall informado inválido");
                             etOverallJogador.requestFocus();
@@ -55,6 +94,19 @@ public class CadastroJogadorActivity extends AppCompatActivity {
                     etNomeJogador.requestFocus();
                 }
             }
+
         });
+
+        bCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                limpaCampos();
+            }
+        });
+    }
+
+    public void limpaCampos() {
+        etNomeJogador.setText("");
+        etOverallJogador.setText("");
     }
 }
