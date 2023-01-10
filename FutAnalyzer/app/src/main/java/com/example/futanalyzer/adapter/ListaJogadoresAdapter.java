@@ -1,12 +1,13 @@
 package com.example.futanalyzer.adapter;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 
 import com.example.futanalyzer.R;
 
@@ -23,26 +24,23 @@ public class ListaJogadoresAdapter extends RecyclerView.Adapter<ListaJogadoresAd
         this.jogadorOnClickListener = jogadorOnClickListener;
     }
 
-    @NonNull
-    @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ListaJogadoresAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.jogador_item, parent, false);
         return new MyViewHolder(itemView);
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull ListaJogadoresAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(final ListaJogadoresAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") final int position){
         Jogador meuJogador = listaJogador.get(position);
-        holder.tvNomeJogador.setText(meuJogador.getNome());
-        holder.tvOverallJogador.setText(meuJogador.getOverall());
-        holder.tvGolsJogador.setText(meuJogador.getGol());
+        holder.tvJogadorNome.setText(meuJogador.getNome());
+        holder.tvJogadorOverall.setText(String.valueOf(meuJogador.getOverall()));
+        holder.tvJogadorGol.setText(String.valueOf(meuJogador.getGol()));
 
         if(jogadorOnClickListener != null){
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    jogadorOnClickListener.onClickJogador(holder.itemView, position);
+                    jogadorOnClickListener.onJogadorClick(holder.itemView, position);
                 }
             });
         }
@@ -54,16 +52,16 @@ public class ListaJogadoresAdapter extends RecyclerView.Adapter<ListaJogadoresAd
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView tvNomeJogador, tvOverallJogador, tvGolsJogador;
+        TextView tvJogadorGol, tvJogadorNome, tvJogadorOverall;
         public MyViewHolder(View itemView){
             super(itemView);
-            tvNomeJogador = (TextView) itemView.findViewById(R.id.jogador_nome);
-            tvOverallJogador = (TextView) itemView.findViewById(R.id.jogador_over);
-            tvGolsJogador = (TextView)  itemView.findViewById(R.id.jogador_gol);
+            tvJogadorGol = (TextView) itemView.findViewById(R.id.jogador_gol);
+            tvJogadorNome = (TextView) itemView.findViewById(R.id.jogador_nome);
+            tvJogadorOverall = (TextView) itemView.findViewById(R.id.jogador_over);
         }
     }
 
     public interface JogadorOnClickListener{
-        public void onClickJogador(View view, int position);
+        public void onJogadorClick(View view, int position);
     }
 }

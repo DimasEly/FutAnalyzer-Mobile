@@ -1,17 +1,10 @@
 package com.example.futanalyzer;
 
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.futanalyzer.informacoes.InformacoesApp;
 import com.example.futanalyzer.jogadores.JogadoresActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -24,16 +17,11 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.futanalyzer.databinding.ActivityMainBinding;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.Socket;
-
 public class MainActivity extends AppCompatActivity {
     MenuItem botaoJogadores;
     private ActivityMainBinding binding;
-    InformacoesApp informacoesApp;
 
+    InformacoesApp informacoesApp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,34 +40,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
 
         botaoJogadores = findViewById(R.id.jogadores);
+        informacoesApp = (InformacoesApp)getApplicationContext();
 
-        //obtendo o contexto
-//        informacoesApp = (InformacoesApp) getApplicationContext();
-//
-//        //criando thread
-//        Thread thread = new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                try{
-//                    //criando conexão com o servidor
-//                    informacoesApp.socket = new Socket("10.0.2.2", 12345);
-//                    informacoesApp.out = new ObjectOutputStream(informacoesApp.socket.getOutputStream());
-//                    informacoesApp.in = new ObjectInputStream(informacoesApp.socket.getInputStream());
-//
-//                    //sincronizando thread
-//                    runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            Toast.makeText(informacoesApp, "Conexão efetuada com sucesso", Toast.LENGTH_SHORT).show();
-//                        }
-//                    });
-//
-//                } catch (IOException ioe){
-//                    ioe.printStackTrace();
-//                }
-//            }
-//        });
-//        thread.start();
     }
 
     @Override

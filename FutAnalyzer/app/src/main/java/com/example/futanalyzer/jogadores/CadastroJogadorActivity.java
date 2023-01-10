@@ -2,7 +2,6 @@ package com.example.futanalyzer.jogadores;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.futanalyzer.R;
-import com.example.futanalyzer.informacoes.InformacoesApp;
+import com.example.futanalyzer.InformacoesApp;
 
 import java.io.IOException;
 
@@ -32,7 +31,7 @@ public class CadastroJogadorActivity extends AppCompatActivity {
         etNomeJogador = findViewById(R.id.etNomeCadastroJogadores);
         etOverallJogador = findViewById(R.id.etOverallCadastroJogadores);
         bCadastrar = findViewById(R.id.btJogadorCadastro);
-        bCancelar = findViewById(R.id.btCancelarJogadorCadastro);
+        bCancelar = findViewById(R.id.btCancelarCadastroJogador);
 
         informacoesApp = (InformacoesApp)getApplicationContext();
 
@@ -48,38 +47,36 @@ public class CadastroJogadorActivity extends AppCompatActivity {
                             int gol = 0;
 
                             //criando o objeto da classe
-                            Jogador meuJogador = new Jogador(nome, overall, gol);
+                            meuJogador = new Jogador(nome, overall, gol);
 
-                            informacoesApp.getListaJogador().add(meuJogador);
-
-                            //criando a thread para o envio do jogador ao servidor
-//                            final Thread thread = new Thread(new Runnable() {
-//                                @Override
-//                                public void run() {
-//                                    try{
-//                                        //iniciando o protocolo para cadastro de jogador
-//                                        informacoesApp.out.writeObject("cadastroJogador");
-//                                        msgRecebida = (String) informacoesApp.in.readObject();
-//                                        if(msgRecebida.equals("Ok")){
-//                                            informacoesApp.out.writeObject(meuJogador);
-//                                            msgRecebida = (String) informacoesApp.in.readObject();
-//                                            //sincronizando as threads para agir sobre a tela
-//                                            runOnUiThread(new Runnable() {
-//                                                @Override
-//                                                public void run() {
-//                                                    Toast.makeText(informacoesApp, "RECEBIDO" + msgRecebida, Toast.LENGTH_SHORT).show();
-//                                                    limpaCampos();
-//
-//                                                }
-//                                            });
-//                                        }
-//                                    } catch (IOException ioe){
-//
-//                                    } catch (ClassNotFoundException classe){
-//
-//                                    }
-//                                }
-//                            });
+//                            criando a thread para o envio do jogador ao servidor
+                            Thread thread = new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try{
+                                        //iniciando o protocolo para cadastro de jogador
+                                        informacoesApp.out.writeObject("cadastroJogador");
+                                        msgRecebida = (String) informacoesApp.in.readObject();
+                                        if(msgRecebida.equals("Ok")){
+                                            informacoesApp.out.writeObject(meuJogador);
+                                            msgRecebida = (String) informacoesApp.in.readObject();
+                                            //sincronizando as threads para agir sobre a tela
+                                            runOnUiThread(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    Toast.makeText(informacoesApp, "RECEBIDO" + msgRecebida, Toast.LENGTH_SHORT).show();
+                                                    limpaCampos();
+                                                }
+                                            });
+                                        }
+                                    } catch (IOException ioe){
+                                        ioe.printStackTrace();
+                                    } catch (ClassNotFoundException classe){
+                                        classe.printStackTrace();
+                                    }
+                                }
+                            });
+                            thread.start();
 
 
                         } else {

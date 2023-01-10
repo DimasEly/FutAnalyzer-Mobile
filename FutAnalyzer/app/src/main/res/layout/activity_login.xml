@@ -43,7 +43,7 @@
 
         <EditText
             android:background="@drawable/fundo_edit_text"
-            android:id="@+id/etNomeCadastroJogadores"
+            android:id="@+id/etNomeUsuario"
             android:layout_width="300dp"
             android:layout_marginTop="8dp"
             android:paddingStart="20dp"
@@ -60,12 +60,12 @@
             android:textSize="16sp"
             android:textStyle="bold"
             android:layout_marginTop="12dp"
-            app:layout_constraintTop_toBottomOf="@id/etNomeCadastroJogadores"
-            app:layout_constraintStart_toStartOf="@+id/etNomeCadastroJogadores" />
+            app:layout_constraintTop_toBottomOf="@id/etNomeUsuario"
+            app:layout_constraintStart_toStartOf="@+id/etNomeUsuario" />
 
         <EditText
             android:background="@drawable/fundo_edit_text"
-            android:id="@+id/etOverallCadastroJogadores"
+            android:id="@+id/etSenhaUsuario"
             android:layout_width="300dp"
             android:layout_marginTop="8dp"
             android:paddingStart="20dp"
@@ -85,11 +85,11 @@
             android:textSize="13sp"
             android:clickable="true"
             android:background="?attr/selectableItemBackground"
-            app:layout_constraintTop_toBottomOf="@id/etOverallCadastroJogadores"
-            app:layout_constraintStart_toStartOf="@+id/etOverallCadastroJogadores"/>
+            app:layout_constraintTop_toBottomOf="@id/etSenhaUsuario"
+            app:layout_constraintStart_toStartOf="@+id/etSenhaUsuario"/>
 
         <Button
-            android:id="@+id/btCancelarJogadorCadastro"
+            android:id="@+id/btUsuarioLogin"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/black"
@@ -99,7 +99,7 @@
             android:layout_marginTop="45dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etOverallCadastroJogadores" />
+            app:layout_constraintTop_toBottomOf="@id/etSenhaUsuario" />
 
         <Button
             android:id="@+id/btCadastrarLogin"
@@ -112,7 +112,7 @@
             android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btCancelarJogadorCadastro" />
+            app:layout_constraintTop_toBottomOf="@id/btUsuarioLogin" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

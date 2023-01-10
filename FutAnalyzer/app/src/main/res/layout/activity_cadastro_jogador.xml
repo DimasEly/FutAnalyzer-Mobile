@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@id/etOverallCadastroJogadores" />
 
     <Button
-        android:id="@+id/btCancelarJogadorCadastro"
+        android:id="@+id/btCancelarCadastroJogador"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/black"
