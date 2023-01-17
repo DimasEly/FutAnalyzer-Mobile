@@ -7,6 +7,7 @@ public class Usuario implements Serializable {
     private String nome;
     private String senha;
     private String usuario;
+    private String email;
 
     public Usuario(String senha, String usuario) {
         this.senha = senha;
@@ -17,6 +18,7 @@ public class Usuario implements Serializable {
         this.nome = nome;
         this.senha = senha;
         this.usuario = usuario;
+        this.email = email;
     }
 
     public String getNome() {
@@ -41,5 +43,13 @@ public class Usuario implements Serializable {
 
     public void setUsuario(String usuario) {
         this.usuario = usuario;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
+    }
+
+    public String getEmail(){
+        return email;
     }
 }

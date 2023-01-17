@@ -31,7 +31,6 @@ public class LoginActivity extends AppCompatActivity {
     Usuario usuario;
     String msgRecebida;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
                                     if (msgRecebida.equals("Ok")) {
                                         informacoesApp.out.writeObject(usuario);
                                         usuario = (Usuario) informacoesApp.in.readObject();
-                                        if (usuario != null) {
+                                        if (usuario == null) {
                                             informacoesApp.setUsuarioLogado(usuario);
 
                                             Intent it = new Intent(LoginActivity.this, MainActivity.class);
