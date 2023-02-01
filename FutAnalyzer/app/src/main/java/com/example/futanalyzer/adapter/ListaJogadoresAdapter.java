@@ -16,12 +16,14 @@ import java.util.List;
 import modelDominio.Jogador;
 
 public class ListaJogadoresAdapter extends RecyclerView.Adapter<ListaJogadoresAdapter.MyViewHolder>{
-    private List<Jogador> listaJogador;
+    private List<Jogador> listaJogadores;
     private JogadorOnClickListener jogadorOnClickListener;
+    private JogadorOnLongClickListener jogadorOnLongClickListener;
 
-    public ListaJogadoresAdapter(List<Jogador> listaJogador, JogadorOnClickListener jogadorOnClickListener){
-        this.listaJogador = listaJogador;
+    public ListaJogadoresAdapter(List<Jogador> listaJogadores, JogadorOnClickListener jogadorOnClickListener, JogadorOnLongClickListener jogadorOnLongClickListener){
+        this.listaJogadores = listaJogadores;
         this.jogadorOnClickListener = jogadorOnClickListener;
+        this.jogadorOnLongClickListener = jogadorOnLongClickListener;
     }
 
     public ListaJogadoresAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
@@ -31,7 +33,7 @@ public class ListaJogadoresAdapter extends RecyclerView.Adapter<ListaJogadoresAd
     }
 
     public void onBindViewHolder(final ListaJogadoresAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") final int position){
-        Jogador meuJogador = listaJogador.get(position);
+        Jogador meuJogador = listaJogadores.get(position);
         holder.tvJogadorNome.setText(meuJogador.getNome());
         holder.tvJogadorOverall.setText(String.valueOf(meuJogador.getOverall()));
         holder.tvJogadorGol.setText(String.valueOf(meuJogador.getGol()));
@@ -43,12 +45,21 @@ public class ListaJogadoresAdapter extends RecyclerView.Adapter<ListaJogadoresAd
                     jogadorOnClickListener.onJogadorClick(holder.itemView, position);
                 }
             });
+        if(jogadorOnLongClickListener != null){
+            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    jogadorOnLongClickListener.onJogadorLongClick(holder.itemView, position);
+                    return false;
+                }
+            });
+        }
         }
     }
 
     @Override
     public int getItemCount() {
-        return listaJogador.size();
+        return listaJogadores.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
@@ -63,5 +74,9 @@ public class ListaJogadoresAdapter extends RecyclerView.Adapter<ListaJogadoresAd
 
     public interface JogadorOnClickListener{
         public void onJogadorClick(View view, int position);
+    }
+
+    public interface JogadorOnLongClickListener{
+        public void onJogadorLongClick(View view, int position);
     }
 }

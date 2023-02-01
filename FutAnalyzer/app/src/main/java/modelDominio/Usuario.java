@@ -14,12 +14,6 @@ public class Usuario implements Serializable {
         this.usuario = usuario;
     }
 
-    public Usuario(String nome, String senha, String usuario) {
-        this.nome = nome;
-        this.senha = senha;
-        this.usuario = usuario;
-        this.email = email;
-    }
 
     public String getNome() {
         return nome;
