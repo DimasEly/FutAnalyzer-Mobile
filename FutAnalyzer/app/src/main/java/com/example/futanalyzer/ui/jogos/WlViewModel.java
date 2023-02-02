@@ -1,4 +1,4 @@
-package com.example.futanalyzer.ui.wl;
+package com.example.futanalyzer.ui.jogos;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

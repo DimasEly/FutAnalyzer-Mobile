@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -43,6 +44,7 @@ public class JogadoresActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent it = new Intent(JogadoresActivity.this, CadastroJogadorActivity.class);
                 startActivity(it);
+                finish();
             }
         });
 
@@ -90,7 +92,23 @@ public class JogadoresActivity extends AppCompatActivity {
     ListaJogadoresAdapter.JogadorOnLongClickListener trataCliqueLongo = new ListaJogadoresAdapter.JogadorOnLongClickListener(){
         @Override
         public void onJogadorLongClick(View view, int position) {
-            
+            AlertDialog.Builder builder = new AlertDialog.Builder(JogadoresActivity.this);
+            builder.setTitle("Deseja excluir o jogador?");
+            builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                         Jogador meuJogador = informacoesApp.getListaJogadores().remove(position);
+                         jogadoresAdapter.notifyDataSetChanged();
+
+                }
+            });
+            builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+            builder.show();
         }
     };
 

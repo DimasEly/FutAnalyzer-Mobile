@@ -54,6 +54,7 @@ public class CadastroJogadorActivity extends AppCompatActivity {
 
                             Intent it = new Intent(CadastroJogadorActivity.this, JogadoresActivity.class);
                             startActivity(it);
+                            finish();
 
 ////                            criando a thread para o envio do jogador ao servidor
 //                            Thread thread = new Thread(new Runnable() {

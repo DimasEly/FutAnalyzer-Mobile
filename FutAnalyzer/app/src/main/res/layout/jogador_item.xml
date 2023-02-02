@@ -42,7 +42,7 @@
 
         <ImageView
             android:id="@+id/gol"
-            android:layout_width="0dp"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="10dp"
@@ -50,14 +50,14 @@
             android:textSize="15sp"
             app:layout_constraintStart_toEndOf="@id/jogador_over"
             app:layout_constraintTop_toBottomOf= "@id/jogador_nome"
-            tools:src="@drawable/ic_gol" />
+            android:src="@drawable/ic_gol" />
 
         <TextView
             android:id="@+id/jogador_gol"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="3dp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/gol"
             app:layout_constraintTop_toTopOf="@id/gol"

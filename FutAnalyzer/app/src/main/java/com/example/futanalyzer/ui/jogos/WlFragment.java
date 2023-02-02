@@ -1,16 +1,12 @@
-package com.example.futanalyzer.ui.wl;
+package com.example.futanalyzer.ui.jogos;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -18,8 +14,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.futanalyzer.R;
 import com.example.futanalyzer.databinding.FragmentHomeBinding;
-import com.example.futanalyzer.jogadores.JogadoresActivity;
-import com.example.futanalyzer.jogadores.ListaJogador;
 
 public class WlFragment extends Fragment {
     Button teste;
