@@ -48,44 +48,36 @@ public class JogadoresActivity extends AppCompatActivity {
             }
         });
 
-        if (informacoesApp.getListaJogadores() != null) {
-            jogadoresAdapter = new ListaJogadoresAdapter(informacoesApp.getListaJogadores(), trataCliqueItem, trataCliqueLongo);
-            rvJogadores.setLayoutManager(new LinearLayoutManager(JogadoresActivity.this));
-            rvJogadores.setItemAnimator(new DefaultItemAnimator());
-            rvJogadores.setAdapter(jogadoresAdapter);
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        informacoesApp.out.writeObject("JogadorLista");
+                        listaJogadores = (ArrayList<Jogador>) informacoesApp.in.readObject();
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                jogadoresAdapter = new ListaJogadoresAdapter(listaJogadores, trataCliqueItem);
+                                rvJogadores.setLayoutManager(new LinearLayoutManager(informacoesApp));
+                                rvJogadores.setItemAnimator(new DefaultItemAnimator());
+                                rvJogadores.setAdapter(jogadoresAdapter);
+                            }
+                        });
+                    } catch (IOException ioe) {
+                        ioe.printStackTrace();
+                    } catch (ClassNotFoundException classe) {
+                        classe.printStackTrace();
+                    }
+                }
+            });
+            thread.start();
         }
 
-//            Thread thread = new Thread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    try {
-//                        informacoesApp.out.writeObject("listaJogadores");
-//                        listaJogadores = (ArrayList<Jogador>) informacoesApp.in.readObject();
-//
-//                        runOnUiThread(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                jogadoresAdapter = new ListaJogadoresAdapter(listaJogadores, trataCliqueItem);
-//                                rvJogadores.setLayoutManager(new LinearLayoutManager(informacoesApp));
-//                                rvJogadores.setItemAnimator(new DefaultItemAnimator());
-//                                rvJogadores.setAdapter(jogadoresAdapter);
-//                            }
-//                        });
-//                    } catch (IOException ioe) {
-//                        ioe.printStackTrace();
-//                    } catch (ClassNotFoundException classe) {
-//                        classe.printStackTrace();
-//                    }
-//                }
-//            });
-//            thread.start();
-//        }
-
-    }
         ListaJogadoresAdapter.JogadorOnClickListener trataCliqueItem = new ListaJogadoresAdapter.JogadorOnClickListener() {
             @Override
             public void onJogadorClick(View view, int position) {
-                Jogador meuJogador = informacoesApp.getListaJogadores().get(position);
+                Jogador meuJogador = listaJogadores.get(position);
             }
         };
 
@@ -97,8 +89,7 @@ public class JogadoresActivity extends AppCompatActivity {
             builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                         Jogador meuJogador = informacoesApp.getListaJogadores().remove(position);
-                         jogadoresAdapter.notifyDataSetChanged();
+
 
                 }
             });

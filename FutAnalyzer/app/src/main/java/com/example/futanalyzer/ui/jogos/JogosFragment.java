@@ -15,15 +15,15 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.futanalyzer.R;
 import com.example.futanalyzer.databinding.FragmentHomeBinding;
 
-public class WlFragment extends Fragment {
+public class JogosFragment extends Fragment {
     Button teste;
 
     private FragmentHomeBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        WlViewModel wlViewModel =
-                new ViewModelProvider(this).get(WlViewModel.class);
+        JogosViewModel jogosViewModel =
+                new ViewModelProvider(this).get(JogosViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();

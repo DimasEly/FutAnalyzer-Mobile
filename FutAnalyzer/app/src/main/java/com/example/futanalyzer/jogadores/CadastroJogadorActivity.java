@@ -48,42 +48,42 @@ public class CadastroJogadorActivity extends AppCompatActivity {
                             int gol = 0;
 
                             //criando o objeto da classe
-                            Jogador meuJogador = new Jogador(nome, overall, gol);
+                            meuJogador = new Jogador(nome, overall, gol);
+//
+//                            informacoesApp.getListaJogadores().add(meuJogador);
 
-                            informacoesApp.getListaJogadores().add(meuJogador);
+//                            Intent it = new Intent(CadastroJogadorActivity.this, JogadoresActivity.class);
+//                            startActivity(it);
+//                            finish();
 
-                            Intent it = new Intent(CadastroJogadorActivity.this, JogadoresActivity.class);
-                            startActivity(it);
-                            finish();
-
-////                            criando a thread para o envio do jogador ao servidor
-//                            Thread thread = new Thread(new Runnable() {
-//                                @Override
-//                                public void run() {
-//                                    try{
-//                                        //iniciando o protocolo para cadastro de jogador
-//                                        informacoesApp.out.writeObject("cadastroJogador");
-//                                        msgRecebida = (String) informacoesApp.in.readObject();
-//                                        if(msgRecebida.equals("Ok")){
-//                                            informacoesApp.out.writeObject(meuJogador);
-//                                            msgRecebida = (String) informacoesApp.in.readObject();
-//                                            //sincronizando as threads para agir sobre a tela
-//                                            runOnUiThread(new Runnable() {
-//                                                @Override
-//                                                public void run() {
-//                                                    Toast.makeText(informacoesApp, "RECEBIDO" + msgRecebida, Toast.LENGTH_SHORT).show();
-//                                                    limpaCampos();
-//                                                }
-//                                            });
-//                                        }
-//                                    } catch (IOException ioe){
-//                                        ioe.printStackTrace();
-//                                    } catch (ClassNotFoundException classe){
-//                                        classe.printStackTrace();
-//                                    }
-//                                }
-//                            });
-//                            thread.start();
+//                            criando a thread para o envio do jogador ao servidor
+                            Thread thread = new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try{
+                                        //iniciando o protocolo para cadastro de jogador
+                                        informacoesApp.out.writeObject("JogadorInserir");
+                                        msgRecebida = (String) informacoesApp.in.readObject();
+                                        if(msgRecebida.equals("ok")){
+                                            informacoesApp.out.writeObject(meuJogador);
+                                            msgRecebida = (String) informacoesApp.in.readObject();
+                                            //sincronizando as threads para agir sobre a tela
+                                            runOnUiThread(new Runnable() {
+                                                @Override
+                                                public void run() {
+                                                    Toast.makeText(informacoesApp, "RECEBIDO" + msgRecebida, Toast.LENGTH_SHORT).show();
+                                                    limpaCampos();
+                                                }
+                                            });
+                                        }
+                                    } catch (IOException ioe){
+                                        ioe.printStackTrace();
+                                    } catch (ClassNotFoundException classe){
+                                        classe.printStackTrace();
+                                    }
+                                }
+                            });
+                            thread.start();
 
 
                         } else {

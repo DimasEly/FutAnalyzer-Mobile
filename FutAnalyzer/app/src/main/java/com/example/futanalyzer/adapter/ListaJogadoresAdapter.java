@@ -20,7 +20,7 @@ public class ListaJogadoresAdapter extends RecyclerView.Adapter<ListaJogadoresAd
     private JogadorOnClickListener jogadorOnClickListener;
     private JogadorOnLongClickListener jogadorOnLongClickListener;
 
-    public ListaJogadoresAdapter(List<Jogador> listaJogadores, JogadorOnClickListener jogadorOnClickListener, JogadorOnLongClickListener jogadorOnLongClickListener){
+    public ListaJogadoresAdapter(List<Jogador> listaJogadores, JogadorOnClickListener jogadorOnClickListener){
         this.listaJogadores = listaJogadores;
         this.jogadorOnClickListener = jogadorOnClickListener;
         this.jogadorOnLongClickListener = jogadorOnLongClickListener;

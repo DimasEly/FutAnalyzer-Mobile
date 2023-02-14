@@ -16,15 +16,12 @@ public class InformacoesApp extends Application {
     public ObjectInputStream in;
 
     private Usuario usuarioLogado;
-    private ArrayList<Jogador> listaJogadores;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        this.listaJogadores = new ArrayList<>();
     }
 
-    public ArrayList<Jogador> getListaJogadores(){ return  listaJogadores;}
 
     public Usuario getUsuarioLogado() {
         return usuarioLogado;
