@@ -17,13 +17,6 @@
         android:theme="@style/Theme.FutAnalyzer"
         tools:targetApi="31">
         <activity
-            android:name=".jogadores.ListaJogador"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".jogadores.CadastroJogadorActivity"
             android:exported="false">
             <meta-data

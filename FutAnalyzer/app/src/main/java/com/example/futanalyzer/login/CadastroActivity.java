@@ -52,7 +52,7 @@ public class CadastroActivity extends AppCompatActivity {
                             String email = etEmailCadastro.getText().toString();
                             String senha = etSenhaCadastro.getText().toString();
 
-                            meuUsuario = new Usuario(usuario, email, senha);
+                            meuUsuario = new Usuario(senha, usuario, email);
 
                             Thread thread = new Thread(new Runnable() {
                                 @Override
@@ -66,7 +66,10 @@ public class CadastroActivity extends AppCompatActivity {
                                             runOnUiThread(new Runnable() {
                                                 @Override
                                                 public void run() {
-                                                    Toast.makeText(informacoesApp, "Recebido" + msgRecebida, Toast.LENGTH_SHORT).show();
+                                                  //  Toast.makeText(informacoesApp, "Recebido" + msgRecebida, Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(informacoesApp, "Usuario cadastrado", Toast.LENGTH_SHORT).show();
+                                                    Intent it = new Intent(CadastroActivity.this, LoginActivity.class);
+                                                    startActivity(it);
                                                 }
                                             });
                                         }

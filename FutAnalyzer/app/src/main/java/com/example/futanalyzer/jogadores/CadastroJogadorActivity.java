@@ -48,13 +48,8 @@ public class CadastroJogadorActivity extends AppCompatActivity {
                             int gol = 0;
 
                             //criando o objeto da classe
-                            meuJogador = new Jogador(nome, overall, gol);
+                            meuJogador = new Jogador(nome, overall, gol, informacoesApp.getUsuarioLogado().getCod());
 //
-//                            informacoesApp.getListaJogadores().add(meuJogador);
-
-//                            Intent it = new Intent(CadastroJogadorActivity.this, JogadoresActivity.class);
-//                            startActivity(it);
-//                            finish();
 
 //                            criando a thread para o envio do jogador ao servidor
                             Thread thread = new Thread(new Runnable() {
@@ -71,7 +66,10 @@ public class CadastroJogadorActivity extends AppCompatActivity {
                                             runOnUiThread(new Runnable() {
                                                 @Override
                                                 public void run() {
-                                                    Toast.makeText(informacoesApp, "RECEBIDO" + msgRecebida, Toast.LENGTH_SHORT).show();
+//                                                    Toast.makeText(informacoesApp, "RECEBIDO" + msgRecebida, Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(informacoesApp, "Jogador cadastrado", Toast.LENGTH_SHORT).show();
+                                                    Intent it = new Intent(CadastroJogadorActivity.this, JogadoresActivity.class);
+                                                    startActivity(it);
                                                     limpaCampos();
                                                 }
                                             });

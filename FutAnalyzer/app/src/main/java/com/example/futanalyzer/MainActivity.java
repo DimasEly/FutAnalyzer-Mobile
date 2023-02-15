@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.futanalyzer.jogadores.CadastroJogadorActivity;
 import com.example.futanalyzer.jogadores.JogadoresActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

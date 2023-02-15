@@ -4,9 +4,20 @@ import java.io.Serializable;
 
 public class Jogador implements Serializable {
     private static final long serialVersionUID = 123L;
+
     private String nome;
     private int overall;
     private int gol;
+    private int cod;
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+    private int idUsuario;
 
     public int getGol() {
         return gol;
@@ -16,10 +27,29 @@ public class Jogador implements Serializable {
         this.gol = gol;
     }
 
-    public Jogador(String nome, int overall, int gol){
+    public Jogador(String nome, int overall, int gol, int idUsuario){
         this.nome = nome;
         this.overall = overall;
         this.gol = gol;
+        this.idUsuario = idUsuario;
+    }
+
+    public Jogador(String nome, int overall) {
+        this.nome = nome;
+        this.overall = overall;
+
+    }
+
+
+
+    public Jogador(int cod) {
+        this.cod = cod;
+    }
+
+
+
+    public Jogador(String nome) {
+        this.nome = nome;
     }
 
     public String getNome() {
@@ -37,4 +67,13 @@ public class Jogador implements Serializable {
     public void setOverall(int overall) {
         this.overall = overall;
     }
+
+    public int getCod() {
+        return cod;
+    }
+
+    public void setCod(int cod) {
+        this.cod = cod;
+    }
 }
+
