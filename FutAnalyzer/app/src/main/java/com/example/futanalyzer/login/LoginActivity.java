@@ -55,7 +55,6 @@ public class LoginActivity extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(informacoesApp, "Conexão efetuada com sucesso", Toast.LENGTH_SHORT).show();
                         }
                     });
                 } catch (IOException ioe){

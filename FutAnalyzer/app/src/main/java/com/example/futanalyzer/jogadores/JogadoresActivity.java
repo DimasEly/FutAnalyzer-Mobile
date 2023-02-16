@@ -88,7 +88,9 @@ public class JogadoresActivity extends AppCompatActivity {
             public void onJogadorClick(View view, int position) {
 
                 Jogador meuJogador = listaJogadores.get(position);
-                Toast.makeText(informacoesApp, "Cod" + listaJogadores.get(position).getCod(), Toast.LENGTH_SHORT).show();
+                Intent it = new Intent(JogadoresActivity.this, JogadorAlterarActivity.class);
+                it.putExtra("jogador", meuJogador);
+                startActivity(it);
             }
         };
 

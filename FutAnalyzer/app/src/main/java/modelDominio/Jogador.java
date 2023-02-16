@@ -42,6 +42,12 @@ public class Jogador implements Serializable {
         this.idUsuario = idUsuario;
     }
 
+    public Jogador(int cod, String nome, int overall) {
+        this.cod = cod;
+        this.nome = nome;
+        this.overall = overall;
+    }
+
     public Jogador(String nome, int overall) {
         this.nome = nome;
         this.overall = overall;

@@ -22,12 +22,12 @@
     <!--    botões-->
     <string name="entrar_botao">Entrar</string>
     <string name="cadastrar_botao">Cadastrar</string>
+    <string name="salvar_botao">Salvar</string>
     <string name="cancelar_botao">Cancelar</string>
     <string name="enviar_botao">Enviar</string>
     <string name="terminar_wl_botao">Terminar WL</string>
     <string name="sim">Sim</string>
     <string name="nao">Não</string>
-
 
 
     <string name="hello_first_fragment">Hello first fragment</string>

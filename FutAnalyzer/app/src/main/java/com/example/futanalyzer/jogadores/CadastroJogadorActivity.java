@@ -29,10 +29,10 @@ public class CadastroJogadorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_jogador);
 
-        etNomeJogador = findViewById(R.id.etNomeCadastroJogadores);
-        etOverallJogador = findViewById(R.id.etOverallCadastroJogadores);
-        bCadastrar = findViewById(R.id.btJogadorCadastro);
-        bCancelar = findViewById(R.id.btCancelarCadastroJogador);
+        etNomeJogador = findViewById(R.id.etNomeCadastrarJogadores);
+        etOverallJogador = findViewById(R.id.etOverallCadastrarJogadores);
+        bCadastrar = findViewById(R.id.btJogadorCadastra);
+        bCancelar = findViewById(R.id.btCancelarCadastrarJogador);
 
         informacoesApp = (InformacoesApp)getApplicationContext();
 
@@ -49,7 +49,6 @@ public class CadastroJogadorActivity extends AppCompatActivity {
 
                             //criando o objeto da classe
                             meuJogador = new Jogador(nome, overall, gol, informacoesApp.getUsuarioLogado().getCod());
-//
 
 //                            criando a thread para o envio do jogador ao servidor
                             Thread thread = new Thread(new Runnable() {

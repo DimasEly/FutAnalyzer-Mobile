@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".jogadores.CadastroJogadorActivity">
+    tools:context=".jogadores.JogadorAlterarActivity">
 
     <TextView
-        android:id="@+id/tvNomeCadastrarJogadores"
+        android:id="@+id/tvNomeAlterarJogadores"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:text="@string/nome_cadastro_jogador"
@@ -20,29 +20,29 @@
         app:layout_constraintVertical_bias="0.3" />
 
     <EditText
-        android:id="@+id/etNomeCadastrarJogadores"
+        android:id="@+id/etNomeAlterarJogadores"
         android:background="@drawable/fundo_edit_text"
         android:layout_width="300dp"
         android:layout_marginTop="8dp"
         android:paddingStart="20dp"
         android:singleLine="true"
         android:layout_height="50dp"
-        app:layout_constraintTop_toBottomOf="@id/tvNomeCadastrarJogadores"
-        app:layout_constraintStart_toStartOf="@+id/tvNomeCadastrarJogadores" />
+        app:layout_constraintTop_toBottomOf="@id/tvNomeAlterarJogadores"
+        app:layout_constraintStart_toStartOf="@+id/tvNomeAlterarJogadores" />
 
     <TextView
-        android:id="@+id/tvOverallCadastrarJogador"
+        android:id="@+id/tvOverallAlterarJogador"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:text="@string/overall_cadastro_jogador"
         android:textSize="16sp"
         android:textStyle="bold"
         android:layout_marginTop="12dp"
-        app:layout_constraintTop_toBottomOf="@id/etNomeCadastrarJogadores"
-        app:layout_constraintStart_toStartOf="@+id/etNomeCadastrarJogadores" />
+        app:layout_constraintTop_toBottomOf="@id/etNomeAlterarJogadores"
+        app:layout_constraintStart_toStartOf="@+id/etNomeAlterarJogadores" />
 
     <EditText
-        android:id="@+id/etOverallCadastrarJogadores"
+        android:id="@+id/etOverallAlterarJogadores"
         android:background="@drawable/fundo_edit_text"
         android:layout_width="300dp"
         android:layout_marginTop="8dp"
@@ -50,25 +50,25 @@
         android:singleLine="true"
         android:layout_height="50dp"
         android:inputType="number"
-        app:layout_constraintTop_toBottomOf="@id/tvOverallCadastrarJogador"
-        app:layout_constraintStart_toStartOf="@+id/tvNomeCadastrarJogadores"
+        app:layout_constraintTop_toBottomOf="@id/tvOverallAlterarJogador"
+        app:layout_constraintStart_toStartOf="@+id/tvNomeAlterarJogadores"
         tools:ignore="RtlSymmetry" />
 
     <Button
-        android:id="@+id/btJogadorCadastra"
+        android:id="@+id/btJogadorAltera"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/black"
         android:padding="16dp"
-        android:text="@string/cadastrar_botao"
+        android:text="@string/salvar_botao"
         android:textSize="16sp"
         android:layout_marginTop="45dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etOverallCadastrarJogadores" />
+        app:layout_constraintTop_toBottomOf="@id/etOverallAlterarJogadores" />
 
     <Button
-        android:id="@+id/btCancelarCadastrarJogador"
+        android:id="@+id/btCancelarAlterarJogador"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/black"
@@ -78,6 +78,6 @@
         android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btJogadorCadastra" />
+        app:layout_constraintTop_toBottomOf="@id/btJogadorAltera" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
