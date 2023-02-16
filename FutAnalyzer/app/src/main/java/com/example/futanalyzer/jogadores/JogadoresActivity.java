@@ -89,45 +89,44 @@ public class JogadoresActivity extends AppCompatActivity {
 
                 Jogador meuJogador = listaJogadores.get(position);
                 Toast.makeText(informacoesApp, "Cod" + listaJogadores.get(position).getCod(), Toast.LENGTH_SHORT).show();
-
-                Thread thread2 = new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try{
-                            informacoesApp.out.writeObject("JogadorExcluir");
-                            msgRecebida = (String) informacoesApp.in.readObject();
-                            if(msgRecebida.equals("ok")){
-                                informacoesApp.out.writeObject(meuJogador.getCod());
-                                msgRecebida = (String) informacoesApp.in.readObject();
-
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Toast.makeText(informacoesApp, "Jogador excluido", Toast.LENGTH_SHORT).show();
-                                        carregaListaJogador();
-                                    }
-                                });
-                            }
-                        } catch (IOException ioe){
-                            ioe.printStackTrace();
-                        } catch (ClassNotFoundException classe){
-                            classe.printStackTrace();
-                        }
-                    }
-                });
-                thread2.start();
             }
         };
 
     ListaJogadoresAdapter.JogadorOnLongClickListener trataCliqueLongo = new ListaJogadoresAdapter.JogadorOnLongClickListener(){
         @Override
         public void onJogadorLongClick(View view, int position) {
+            Jogador meuJogador = listaJogadores.get(position);
             AlertDialog.Builder builder = new AlertDialog.Builder(JogadoresActivity.this);
             builder.setTitle("Deseja excluir o jogador?");
             builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
+                    Thread thread2 = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try{
+                                informacoesApp.out.writeObject("JogadorExcluir");
+                                msgRecebida = (String) informacoesApp.in.readObject();
+                                if(msgRecebida.equals("ok")){
+                                    informacoesApp.out.writeObject(meuJogador.getCod());
+                                    msgRecebida = (String) informacoesApp.in.readObject();
 
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Toast.makeText(informacoesApp, "Jogador excluido", Toast.LENGTH_SHORT).show();
+                                            carregaListaJogador();
+                                        }
+                                    });
+                                }
+                            } catch (IOException ioe){
+                                ioe.printStackTrace();
+                            } catch (ClassNotFoundException classe){
+                                classe.printStackTrace();
+                            }
+                        }
+                    });
+                    thread2.start();
 
                 }
             });
