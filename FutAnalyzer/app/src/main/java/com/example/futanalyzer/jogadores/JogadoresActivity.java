@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.futanalyzer.R;
 import com.example.futanalyzer.adapter.ListaJogadoresAdapter;
@@ -20,6 +21,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import modelDominio.Jogador;
+import modelDominio.Usuario;
 
 public class JogadoresActivity extends AppCompatActivity {
     FloatingActionButton fab;
@@ -29,6 +31,7 @@ public class JogadoresActivity extends AppCompatActivity {
     ArrayList<Jogador> listaJogadores;
 
     InformacoesApp informacoesApp;
+    String msgRecebida;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,36 +51,71 @@ public class JogadoresActivity extends AppCompatActivity {
             }
         });
 
-            Thread thread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        informacoesApp.out.writeObject("JogadorLista");
-                        listaJogadores = (ArrayList<Jogador>) informacoesApp.in.readObject();
+        carregaListaJogador();
+    }
 
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                jogadoresAdapter = new ListaJogadoresAdapter(listaJogadores, trataCliqueItem);
-                                rvJogadores.setLayoutManager(new LinearLayoutManager(informacoesApp));
-                                rvJogadores.setItemAnimator(new DefaultItemAnimator());
-                                rvJogadores.setAdapter(jogadoresAdapter);
-                            }
-                        });
-                    } catch (IOException ioe) {
-                        ioe.printStackTrace();
-                    } catch (ClassNotFoundException classe) {
-                        classe.printStackTrace();
-                    }
+    private void carregaListaJogador() {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    informacoesApp.out.writeObject("JogadorLista");
+                    Usuario userLogado = informacoesApp.getUsuarioLogado();
+                    informacoesApp.out.writeObject(userLogado);
+                    listaJogadores = (ArrayList<Jogador>) informacoesApp.in.readObject();
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            jogadoresAdapter = new ListaJogadoresAdapter(listaJogadores, trataCliqueItem, trataCliqueLongo);
+                            rvJogadores.setLayoutManager(new LinearLayoutManager(informacoesApp));
+                            rvJogadores.setItemAnimator(new DefaultItemAnimator());
+                            rvJogadores.setAdapter(jogadoresAdapter);
+                        }
+                    });
+                } catch (IOException ioe) {
+                    ioe.printStackTrace();
+                } catch (ClassNotFoundException classe) {
+                    classe.printStackTrace();
                 }
-            });
-            thread.start();
-        }
+            }
+        });
+        thread.start();
+    }
 
-        ListaJogadoresAdapter.JogadorOnClickListener trataCliqueItem = new ListaJogadoresAdapter.JogadorOnClickListener() {
+    ListaJogadoresAdapter.JogadorOnClickListener trataCliqueItem = new ListaJogadoresAdapter.JogadorOnClickListener() {
             @Override
             public void onJogadorClick(View view, int position) {
+
                 Jogador meuJogador = listaJogadores.get(position);
+                Toast.makeText(informacoesApp, "Cod" + listaJogadores.get(position).getCod(), Toast.LENGTH_SHORT).show();
+
+                Thread thread2 = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try{
+                            informacoesApp.out.writeObject("JogadorExcluir");
+                            msgRecebida = (String) informacoesApp.in.readObject();
+                            if(msgRecebida.equals("ok")){
+                                informacoesApp.out.writeObject(meuJogador.getCod());
+                                msgRecebida = (String) informacoesApp.in.readObject();
+
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(informacoesApp, "Jogador excluido", Toast.LENGTH_SHORT).show();
+                                        carregaListaJogador();
+                                    }
+                                });
+                            }
+                        } catch (IOException ioe){
+                            ioe.printStackTrace();
+                        } catch (ClassNotFoundException classe){
+                            classe.printStackTrace();
+                        }
+                    }
+                });
+                thread2.start();
             }
         };
 

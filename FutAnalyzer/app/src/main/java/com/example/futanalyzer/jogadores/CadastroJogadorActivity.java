@@ -71,6 +71,7 @@ public class CadastroJogadorActivity extends AppCompatActivity {
                                                     Intent it = new Intent(CadastroJogadorActivity.this, JogadoresActivity.class);
                                                     startActivity(it);
                                                     limpaCampos();
+                                                    finish();
                                                 }
                                             });
                                         }
