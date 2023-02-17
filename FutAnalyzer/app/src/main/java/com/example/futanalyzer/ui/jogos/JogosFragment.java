@@ -28,27 +28,6 @@ public class JogosFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final Button botao = binding.terminarWl;
-        botao.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("Deseja terminar sua weekend league?")
-                        .setPositiveButton(R.string.sim, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                //fazer a função de terminar wl
-                                dialogInterface.cancel();
-                            }
-                        }).setNegativeButton(R.string.nao, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                //adicionar cancelamento
-                                dialogInterface.cancel();
-                            }
-                        });
-            }
-        });
         return root;
 
     }
