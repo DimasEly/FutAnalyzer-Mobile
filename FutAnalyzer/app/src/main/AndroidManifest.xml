@@ -17,7 +17,7 @@
         android:theme="@style/Theme.FutAnalyzer"
         tools:targetApi="31">
         <activity
-            android:name=".CadastroJogoActivity"
+            android:name=".ui.jogos.CadastroJogoActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -61,41 +62,97 @@ public class JogosFragment extends Fragment {
             }
         });
 
-        carregaListaJogo();
 
-        private void carregaListaJogo() {
-            Thread thread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        informacoesApp.out.writeObject("JogoLista");
-                        Usuario userLogado = informacoesApp.getUsuarioLogado();
-                        informacoesApp.out.writeObject(userLogado);
-                        listaJogos = (ArrayList<Jogo>) informacoesApp.in.readObject();
-
-                        getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                jogosAdapter = new ListaJogosAdapter(listaJogadores, trataCliqueItem, trataCliqueLongo);
-                                rvListadeJogo.setLayoutManager(new LinearLayoutManager(informacoesApp));
-                                rvListadeJogo.setItemAnimator(new DefaultItemAnimator());
-                                rvListadeJogo.setAdapter(jogosAdapter);
-                            }
-                        });
-                    } catch (IOException ioe) {
-                        ioe.printStackTrace();
-                    } catch (ClassNotFoundException classe) {
-                        classe.printStackTrace();
-                    }
-                }
-            });
-            thread.start();
-        }
-
+        carregaListaJogos();
 
         return root;
-
     }
+
+    private void carregaListaJogos() {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    informacoesApp.out.writeObject("JogoLista");
+                    Usuario userLogado = informacoesApp.getUsuarioLogado();
+                    informacoesApp.out.writeObject(userLogado);
+                    listaJogos = (ArrayList<Jogo>) informacoesApp.in.readObject();
+
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            jogosAdapter = new ListaJogosAdapter(listaJogos, trataCliqueItem, trataCliqueLongo);
+                            rvListadeJogo.setLayoutManager(new LinearLayoutManager(informacoesApp));
+                            rvListadeJogo.setItemAnimator(new DefaultItemAnimator());
+                            rvListadeJogo.setAdapter(jogosAdapter);
+                        }
+                    });
+                } catch (IOException ioe) {
+                    ioe.printStackTrace();
+                } catch (ClassNotFoundException classe) {
+                    classe.printStackTrace();
+                }
+            }
+        });
+        thread.start();
+    }
+
+    ListaJogosAdapter.JogoOnClickListener trataCliqueItem = new ListaJogosAdapter.JogoOnClickListener() {
+            @Override
+            public void onJogoClick(View view, int position) {
+                Jogo meuJogo = listaJogos.get(position);
+
+            }
+        };
+
+        ListaJogosAdapter.JogoOnLongClickListener trataCliqueLongo = new ListaJogosAdapter.JogoOnLongClickListener() {
+            @Override
+            public void onJogoLongClick(View view, int position) {
+                Jogo meuJogo = listaJogos.get(position);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Deseja excluir o jogo?");
+                builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Thread thread2 = new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try{
+                                    informacoesApp.out.writeObject("JogoExcluir");
+                                    msgRecebida = (String) informacoesApp.in.readObject();
+                                    if(msgRecebida.equals("ok")){
+                                        informacoesApp.out.writeObject(meuJogo.getId());
+                                        msgRecebida = (String) informacoesApp.in.readObject();
+
+                                        getActivity().runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Toast.makeText(informacoesApp, "Jogo excluído com sucesso", Toast.LENGTH_SHORT).show();
+                                                carregaListaJogos();
+                                            }
+                                        });
+                                    }
+                                } catch (IOException ioe){
+                                    ioe.printStackTrace();
+                                } catch (ClassNotFoundException classe){
+                                    classe.printStackTrace();
+                                }
+                            }
+                        });
+                        thread2.start();
+                    }
+                });
+                builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                builder.show();
+            }
+        };
+
+
 
     @Override
     public void onDestroyView() {

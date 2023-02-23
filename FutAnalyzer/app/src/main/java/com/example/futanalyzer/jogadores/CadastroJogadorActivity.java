@@ -104,6 +104,8 @@ public class CadastroJogadorActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 limpaCampos();
+                Intent it = new Intent(CadastroJogadorActivity.this, JogadoresActivity.class);
+                startActivity(it);
             }
         });
     }
