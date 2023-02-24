@@ -3,11 +3,11 @@
 
     <item
         android:id="@+id/navigation_atual"
-        android:icon="@drawable/ic_fogo"
+        android:icon="@drawable/ic_gol"
         android:title="@string/title_home" />
 
     <item
         android:id="@+id/navigation_estatistica"
-        android:icon="@drawable/ic_estatistica"
+        android:icon="@drawable/perfil"
         android:title="@string/title_dashboard" />
 </menu>

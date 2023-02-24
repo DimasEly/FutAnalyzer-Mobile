@@ -24,7 +24,8 @@ import modelDominio.Usuario;
 
 public class EstatisticasFragment extends Fragment {
     ArrayList<Jogo> listaVitorias, listaEmpates, listaDerrotas;
-    TextView numeroVitorias, numeroEmpates, numeroDerrotas;
+    TextView numeroVitorias, numeroEmpates, numeroDerrotas, numeroGolsFeitos;
+    int golsFeitos;
 
     InformacoesApp informacoesApp;
     String msgRecebida;
@@ -41,6 +42,7 @@ public class EstatisticasFragment extends Fragment {
         numeroVitorias = binding.textVitorias;
         numeroEmpates = binding.textEmpates;
         numeroDerrotas = binding.textDerrotas;
+        numeroGolsFeitos = binding.textGolsFeitos;
 
         informacoesApp = (InformacoesApp) getActivity().getApplication();
 
@@ -55,6 +57,7 @@ public class EstatisticasFragment extends Fragment {
                     listaVitorias = (ArrayList<Jogo>) informacoesApp.in.readObject();
                     listaEmpates = (ArrayList<Jogo>) informacoesApp.in.readObject();
                     listaDerrotas = (ArrayList<Jogo>) informacoesApp.in.readObject();
+                    golsFeitos = (int) informacoesApp.in.readObject();
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -66,6 +69,9 @@ public class EstatisticasFragment extends Fragment {
 
                             int numDer = listaDerrotas.size();
                             numeroDerrotas.setText(String.valueOf(numDer));
+
+                            int numGolMeu = golsFeitos;
+                            numeroGolsFeitos.setText(String.valueOf(numGolMeu));
                         }
                     });
                 } catch (IOException ioe) {
