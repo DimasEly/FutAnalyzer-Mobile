@@ -17,6 +17,13 @@
         android:theme="@style/Theme.FutAnalyzer"
         tools:targetApi="31">
         <activity
+            android:name=".ui.jogos.AlteraJogoActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ui.jogos.CadastroJogoActivity"
             android:exported="false">
             <meta-data
@@ -32,14 +39,16 @@
         </activity>
         <activity
             android:name=".jogadores.CadastroJogadorActivity"
-            android:exported="false">
+            android:exported="false"
+            android:label="@string/cadastro_jogador">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".jogadores.JogadoresActivity"
-            android:exported="false">
+            android:exported="false"
+            android:label="@string/elenco">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

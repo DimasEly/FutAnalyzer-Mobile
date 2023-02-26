@@ -21,6 +21,8 @@ import com.example.futanalyzer.InformacoesApp;
 import com.example.futanalyzer.R;
 import com.example.futanalyzer.adapter.ListaJogosAdapter;
 import com.example.futanalyzer.databinding.FragmentHomeBinding;
+import com.example.futanalyzer.jogadores.JogadorAlterarActivity;
+import com.example.futanalyzer.jogadores.JogadoresActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.IOException;
@@ -101,9 +103,14 @@ public class JogosFragment extends Fragment {
             @Override
             public void onJogoClick(View view, int position) {
                 Jogo meuJogo = listaJogos.get(position);
+                Intent it = new Intent(getActivity(), AlteraJogoActivity.class);
+                it.putExtra("jogo", meuJogo);
+                startActivity(it);
+                getActivity().finish();
 
             }
         };
+
 
         ListaJogosAdapter.JogoOnLongClickListener trataCliqueLongo = new ListaJogosAdapter.JogoOnLongClickListener() {
             @Override

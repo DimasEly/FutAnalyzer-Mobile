@@ -1,13 +1,17 @@
 <resources>
     <string name="app_name">FutAnalyzer</string>
     <string name="title_home">Jogos</string>
-    <string name="title_dashboard">Perfil</string>
+    <string name="title_dashboard">Estatísticas</string>
     <string name="title_activity_splash">SplashActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+
+    <!--    nomes das telas-->
+    <string name="elenco">Elenco</string>
+    <string name="cadastro_jogador">Cadastro de Jogador</string>
 
     <!--    tela de login e cadastro-->
     <string name="usuario_login">Usuário</string>
@@ -30,20 +34,26 @@
     <string name="nao">Não</string>
 
     <!--    tela de estátisticas-->
-    <string name="vitorias">Vitórias</string>
-    <string name="empates">Empates</string>
-    <string name="derrotas">Derrotas</string>
-    <string name="gols_marcados">Gols marcados</string>
-    <string name="gols_sofridos">Gols sofridos</string>
-    <string name="saldo_de_gols">Saldo de gols</string>
-    <string name="gols_pjogo">Gols marcados por jogo</string>
-    <string name="gols_contra_pjogo">Gols sofridos por jogo</string>
+    <string name="jogos">Partidas disputadas:</string>
+    <string name="vitorias">Vitórias:</string>
+    <string name="empates">Empates:</string>
+    <string name="derrotas">Derrotas:</string>
+    <string name="aproveitamento">Porcentagem de aproveitamento:</string>
+    <string name="gols_marcados">Gols marcados:</string>
+    <string name="gols_sofridos">Gols sofridos:</string>
+    <string name="saldo_de_gols">Saldo de gols:</string>
+    <string name="gols_pjogo">Gols marcados por jogo:</string>
+    <string name="gols_contra_pjogo">Gols sofridos por jogo:</string>
+    <string name="estatisticas">Seguem suas estatísticas detalhadas:</string>
+
 
     <!--    jogo item-->
     <string name="meu_time">Meu time</string>
     <string name="oponente">Oponente</string>
 
+
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_jogo_altera">JogoAlteraActivity</string>
 </resources>

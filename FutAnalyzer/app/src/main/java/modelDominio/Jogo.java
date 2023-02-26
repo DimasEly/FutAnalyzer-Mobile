@@ -23,6 +23,7 @@ public class Jogo implements Serializable {
         this.idUsuario = idUsuario;
     }
 
+
     public int getId() {
         return id;
     }

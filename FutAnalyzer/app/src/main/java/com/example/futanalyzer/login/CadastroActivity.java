@@ -70,6 +70,7 @@ public class CadastroActivity extends AppCompatActivity {
                                                     Toast.makeText(informacoesApp, "Usuario cadastrado", Toast.LENGTH_SHORT).show();
                                                     Intent it = new Intent(CadastroActivity.this, LoginActivity.class);
                                                     startActivity(it);
+                                                    finish();
                                                 }
                                             });
                                         }

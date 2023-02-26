@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -24,8 +25,8 @@ import modelDominio.Usuario;
 
 public class EstatisticasFragment extends Fragment {
     ArrayList<Jogo> listaVitorias, listaEmpates, listaDerrotas;
-    TextView numeroVitorias, numeroEmpates, numeroDerrotas, numeroGolsFeitos;
-    int golsFeitos;
+    TextView numeroVitorias, numeroEmpates, numeroDerrotas, numeroGolsFeitos, numeroGolsSofridos, numeroJogos, mediaGolsFeitos, mediaGolsSofridos, saldoGols, aproveitamento;
+    int golsFeitos, golsSofridos;
 
     InformacoesApp informacoesApp;
     String msgRecebida;
@@ -39,10 +40,17 @@ public class EstatisticasFragment extends Fragment {
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        numeroJogos = binding.textJogos;
         numeroVitorias = binding.textVitorias;
         numeroEmpates = binding.textEmpates;
         numeroDerrotas = binding.textDerrotas;
         numeroGolsFeitos = binding.textGolsFeitos;
+        numeroGolsSofridos = binding.textGolsSofridos;
+        mediaGolsFeitos = binding.textGolsFeitosPjogo;
+        mediaGolsSofridos = binding.textGolsSofridosPjogo;
+        saldoGols = binding.textSaldo;
+        aproveitamento = binding.textAproveitamento;
+
 
         informacoesApp = (InformacoesApp) getActivity().getApplication();
 
@@ -58,6 +66,7 @@ public class EstatisticasFragment extends Fragment {
                     listaEmpates = (ArrayList<Jogo>) informacoesApp.in.readObject();
                     listaDerrotas = (ArrayList<Jogo>) informacoesApp.in.readObject();
                     golsFeitos = (int) informacoesApp.in.readObject();
+                    golsSofridos = (int) informacoesApp.in.readObject();
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -72,6 +81,36 @@ public class EstatisticasFragment extends Fragment {
 
                             int numGolMeu = golsFeitos;
                             numeroGolsFeitos.setText(String.valueOf(numGolMeu));
+
+                            int numGolAdv = golsSofridos;
+                            numeroGolsSofridos.setText(String.valueOf(numGolAdv));
+
+                            int saldoDeGols = numGolMeu - numGolAdv;
+                            saldoGols.setText(String.valueOf(saldoDeGols));
+
+                            int numJogos = numVit+ numEmp + numDer;
+                            numeroJogos.setText(String.valueOf(numJogos));
+
+                            if(numJogos > 0){
+                                double medGolsFeitosAux = (double) numGolMeu/numJogos;
+                                float medGolsFeitos = (float) medGolsFeitosAux;
+                                mediaGolsFeitos.setText(String.valueOf(medGolsFeitos));
+
+                                double medGolsSofridosAux = (double) numGolAdv/numJogos;
+                                float medGolsSofridos = (float) medGolsSofridosAux;
+                                mediaGolsSofridos.setText(String.valueOf(medGolsSofridos));
+
+                                double aprovAux =  ( (double) (numVit*3 + numEmp) / (double) (numJogos*3)) * 100;
+                                int aprov = (int) aprovAux;
+                                aproveitamento.setText(String.valueOf(aprov));
+
+
+                            } else {
+                                mediaGolsFeitos.setText(String.valueOf(0));
+                                mediaGolsSofridos.setText(String.valueOf(0));
+                                aproveitamento.setText(String.valueOf(0));
+                            }
+
                         }
                     });
                 } catch (IOException ioe) {

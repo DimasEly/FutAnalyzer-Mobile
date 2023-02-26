@@ -40,7 +40,6 @@ public class LoginActivity extends AppCompatActivity {
         etSenhaUsuario = findViewById(R.id.etSenhaUsuario);
         btEntrarUsuario = findViewById(R.id.btUsuarioLogin);
         btCadastrarUsuario = findViewById(R.id.btCadastrarLogin);
-        tvEsqueceuSenha = findViewById(R.id.tvEsqueceuSenha);
 
         informacoesApp = (InformacoesApp) getApplicationContext();
 
@@ -91,6 +90,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                             Intent it = new Intent(LoginActivity.this, MainActivity.class);
                                             startActivity(it);
+                                            finish();
                                         } else {
                                             runOnUiThread(new Runnable() {
                                                 @Override
@@ -134,13 +134,5 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        tvEsqueceuSenha.setPaintFlags(tvEsqueceuSenha.getPaintFlags());
-        tvEsqueceuSenha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent it = new Intent(LoginActivity.this, CadastroActivity.class);
-                startActivity(it);
-            }
-        });
     }
 }
