@@ -64,9 +64,6 @@ public class JogosFragment extends Fragment {
             }
         });
 
-
-        carregaListaJogos();
-
         return root;
     }
 
@@ -159,7 +156,11 @@ public class JogosFragment extends Fragment {
             }
         };
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        carregaListaJogos();
+    }
 
     @Override
     public void onDestroyView() {

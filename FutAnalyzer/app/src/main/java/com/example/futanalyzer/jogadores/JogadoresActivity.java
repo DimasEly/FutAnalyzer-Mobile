@@ -51,7 +51,7 @@ public class JogadoresActivity extends AppCompatActivity {
             }
         });
 
-        carregaListaJogador();
+//        carregaListaJogador();
     }
 
     private void carregaListaJogador() {
@@ -142,4 +142,9 @@ public class JogadoresActivity extends AppCompatActivity {
         }
     };
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        carregaListaJogador();
     }
+}

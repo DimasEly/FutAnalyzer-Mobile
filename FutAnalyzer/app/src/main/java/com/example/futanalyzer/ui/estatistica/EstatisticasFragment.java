@@ -18,6 +18,7 @@ import com.example.futanalyzer.adapter.ListaJogosAdapter;
 import com.example.futanalyzer.databinding.FragmentDashboardBinding;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import modelDominio.Jogo;
@@ -92,13 +93,15 @@ public class EstatisticasFragment extends Fragment {
                             numeroJogos.setText(String.valueOf(numJogos));
 
                             if(numJogos > 0){
-                                double medGolsFeitosAux = (double) numGolMeu/numJogos;
-                                float medGolsFeitos = (float) medGolsFeitosAux;
-                                mediaGolsFeitos.setText(String.valueOf(medGolsFeitos));
+                                DecimalFormat formato = new DecimalFormat("#.##");
 
-                                double medGolsSofridosAux = (double) numGolAdv/numJogos;
-                                float medGolsSofridos = (float) medGolsSofridosAux;
-                                mediaGolsSofridos.setText(String.valueOf(medGolsSofridos));
+                                float medGolsFeitosAux = (float) numGolMeu/numJogos;
+                                String medGolsFeitos = formato.format(medGolsFeitosAux);
+                                mediaGolsFeitos.setText(medGolsFeitos);
+
+                                float medGolsSofridosAux = (float) numGolAdv/numJogos;
+                                String medGolsSofridos = formato.format(medGolsSofridosAux);
+                                mediaGolsSofridos.setText(medGolsSofridos);
 
                                 double aprovAux =  ( (double) (numVit*3 + numEmp) / (double) (numJogos*3)) * 100;
                                 int aprov = (int) aprovAux;
