@@ -71,7 +71,6 @@ public class AlteraJogoActivity extends AppCompatActivity {
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
-                                                Intent it = new Intent(AlteraJogoActivity.this, MainActivity.class);
                                                 startActivity(it);
                                                 finish();
                                             }

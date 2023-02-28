@@ -60,7 +60,6 @@ public class JogosFragment extends Fragment {
             public void onClick(View view) {
                 Intent it = new Intent(getActivity(), CadastroJogoActivity.class);
                 startActivity(it);
-                getActivity().finish();
             }
         });
 

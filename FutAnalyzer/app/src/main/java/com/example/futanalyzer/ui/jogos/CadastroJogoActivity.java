@@ -94,8 +94,6 @@ public class CadastroJogoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 limpaCampos();
-                Intent it = new Intent(CadastroJogoActivity.this, MainActivity.class);
-                startActivity(it);
                 finish();
             }
         });
