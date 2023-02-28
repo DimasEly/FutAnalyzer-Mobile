@@ -36,7 +36,6 @@ public class ListaJogadoresAdapter extends RecyclerView.Adapter<ListaJogadoresAd
         Jogador meuJogador = listaJogadores.get(position);
         holder.tvJogadorNome.setText(meuJogador.getNome());
         holder.tvJogadorOverall.setText(String.valueOf(meuJogador.getOverall()));
-        holder.tvJogadorGol.setText(String.valueOf(meuJogador.getGol()));
 
         if(jogadorOnClickListener != null){
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -63,10 +62,9 @@ public class ListaJogadoresAdapter extends RecyclerView.Adapter<ListaJogadoresAd
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView tvJogadorGol, tvJogadorNome, tvJogadorOverall;
+        TextView tvJogadorNome, tvJogadorOverall;
         public MyViewHolder(View itemView){
             super(itemView);
-            tvJogadorGol = (TextView) itemView.findViewById(R.id.jogador_gol);
             tvJogadorNome = (TextView) itemView.findViewById(R.id.jogador_nome);
             tvJogadorOverall = (TextView) itemView.findViewById(R.id.jogador_over);
         }

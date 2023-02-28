@@ -76,7 +76,7 @@
             tools:ignore="RtlSymmetry" />
 
         <CheckBox
-            android:id="@+id/cMSenhaLogin"
+            android:id="@+id/cbSenhaLogin"
             android:layout_width="128dp"
             android:layout_height="29dp"
             android:layout_marginTop="8dp"

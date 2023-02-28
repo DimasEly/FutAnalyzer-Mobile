@@ -71,8 +71,6 @@ public class JogadorAlterarActivity extends AppCompatActivity {
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
-//                                                Intent it = new Intent(JogadorAlterarActivity.this, JogadoresActivity.class);
-//                                                startActivity(it);
                                                 finish();
                                             }
                                         });
@@ -97,5 +95,11 @@ public class JogadorAlterarActivity extends AppCompatActivity {
             }
         });
 
+        btCancelarAlterarJogador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 }

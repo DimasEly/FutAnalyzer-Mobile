@@ -3,8 +3,11 @@ package com.example.futanalyzer.login;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +33,9 @@ public class LoginActivity extends AppCompatActivity {
     InformacoesApp informacoesApp;
     Usuario usuario;
     String msgRecebida;
+    CheckBox cbMostrarSenha;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         etSenhaUsuario = findViewById(R.id.etSenhaUsuario);
         btEntrarUsuario = findViewById(R.id.btUsuarioLogin);
         btCadastrarUsuario = findViewById(R.id.btCadastrarLogin);
+        cbMostrarSenha = findViewById(R.id.cbSenhaLogin);
 
         informacoesApp = (InformacoesApp) getApplicationContext();
 
@@ -122,6 +128,17 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     etLoginUsuario.setError("Erro: Informe o login");
                     etLoginUsuario.requestFocus();
+                }
+            }
+        });
+
+        cbMostrarSenha.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    etSenhaUsuario.setTransformationMethod(null);
+                } else {
+                    etSenhaUsuario.setTransformationMethod(new PasswordTransformationMethod());
                 }
             }
         });

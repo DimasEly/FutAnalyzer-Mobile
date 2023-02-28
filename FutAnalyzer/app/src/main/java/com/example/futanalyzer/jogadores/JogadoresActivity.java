@@ -47,7 +47,6 @@ public class JogadoresActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent it = new Intent(JogadoresActivity.this, CadastroJogadorActivity.class);
                 startActivity(it);
-                finish();
             }
         });
 

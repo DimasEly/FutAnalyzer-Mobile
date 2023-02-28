@@ -33,35 +33,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:textColor="@color/black"
+            android:textSize="22sp"
             android:textStyle="bold"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@id/jogador_over"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/jogador_over"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Neymar Júnior" />
 
-        <ImageView
-            android:id="@+id/gol"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@id/jogador_over"
-            app:layout_constraintTop_toBottomOf= "@id/jogador_nome"
-            android:src="@drawable/ic_gol" />
-
-        <TextView
-            android:id="@+id/jogador_gol"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:layout_marginLeft="3dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/gol"
-            app:layout_constraintTop_toTopOf="@id/gol"
-            android:text="8"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
